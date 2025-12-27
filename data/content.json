@@ -1,0 +1,28 @@
+{
+  "doctrines": [
+    { "number": 1, "text": "Ship fast, measure, iterate." },
+    { "number": 2, "text": "Code is communication." },
+    { "number": 3, "text": "Every system must fail gracefully." },
+    { "number": 4, "text": "AI is tooling, not magic." },
+    { "number": 5, "text": "Constraints breed creativity." },
+    { "number": 6, "text": "Open source > résumé bullets." }
+  ],
+  "hero": {
+    "title": "I build systems that scale.",
+    "subtitle": "Full-stack products. AI-driven backends. Real impact.",
+    "status": "SYSTEM ONLINE"
+  },
+  "cta": {
+    "title": "INITIATE COLLABORATION",
+    "subtitle": "I'm building AI systems, scaling infrastructure, and shipping real products. Interested in ambitious problems? Let's talk."
+  },
+  "meta": {
+    "name": "Kaushal Kumar",
+    "title": "Digital Architect",
+    "email": "kau333halkumar@gmail.com",
+    "github": "https://github.com/KAUSHAL36977",
+    "linkedin": "https://linkedin.com/in/kaushalkumar-engineer36977",
+    "website": "https://kaushal.dev"
+  }
+}
+

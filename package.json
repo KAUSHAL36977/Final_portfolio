@@ -1,0 +1,29 @@
+{
+  "name": "kaushal-vault",
+  "version": "1.0.0",
+  "description": "Elite full-stack engineer portfolio. 3D-driven. Dark obsession.",
+  "author": "Kaushal Kumar",
+  "license": "MIT",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'No build required for static site'",
+    "deploy:vercel": "vercel",
+    "deploy:netlify": "netlify deploy --prod --dir=."
+  },
+  "keywords": [
+    "portfolio",
+    "engineer",
+    "three.js",
+    "gsap",
+    "dark-mode",
+    "3d",
+    "luxury"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KAUSHAL36977/kaushal-vault"
+  },
+  "homepage": "https://kaushal.dev"
+}
+

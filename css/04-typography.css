@@ -1,0 +1,70 @@
+/* ===== 04-TYPOGRAPHY.CSS ===== */
+/* Hierarchy. Scale. Authority. */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    line-height: var(--line-height-tight);
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+h1 {
+    font-size: var(--font-size-5xl);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+h2 {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+}
+
+h4 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+}
+
+p {
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+    line-height: var(--line-height-normal);
+}
+
+.text-muted {
+    color: var(--text-secondary);
+}
+
+.text-dim {
+    color: var(--text-tertiary);
+}
+
+/* MONO TEXT (SYSTEM LANGUAGE) */
+.text-mono {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.05em;
+}
+
+/* SECTION TITLES */
+.section-title {
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+    letter-spacing: -0.03em;
+}
+
+.section-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-8);
+    line-height: var(--line-height-normal);
+}
+

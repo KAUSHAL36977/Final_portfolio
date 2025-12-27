@@ -1,0 +1,53 @@
+{
+  "projects": [
+    {
+      "title": "Autonomous Ground Vehicle (AGV)",
+      "icon": "🤖",
+      "problem": "Build an AI-driven rover for autonomous navigation with computer vision, real-time obstacle avoidance, and precision mapping.",
+      "description": "Designed a 4WD rover with SLAM mapping, A* pathfinding, and sensor fusion. Built computer vision pipeline using TensorFlow for object detection. Achieved 0.5m precision GPS navigation and 92% accuracy in obstacle detection.",
+      "impact": [
+        { "value": "0.5m", "label": "Precision" },
+        { "value": "92%", "label": "Accuracy" },
+        { "value": "<200ms", "label": "Response Time" }
+      ],
+      "stack": ["Python", "OpenCV", "TensorFlow", "SLAM", "Arduino"]
+    },
+    {
+      "title": "BOMANI: Livestock Intelligence Platform",
+      "icon": "🐄",
+      "problem": "Help 10M+ Indian farmers identify cattle breeds at scale. Constraints: Low bandwidth, rural connectivity, affordability.",
+      "description": "Built computer vision system for breed identification optimized for mobile. Server-side inference on resource-constrained devices. Real-time health monitoring and pricing intelligence. Designed for offline-first operation.",
+      "impact": [
+        { "value": "10M+", "label": "Potential Users" },
+        { "value": "92%", "label": "Detection Accuracy" },
+        { "value": "Real-Time", "label": "Processing" }
+      ],
+      "stack": ["React Native", "TensorFlow Lite", "Node.js", "MongoDB", "Firebase"]
+    },
+    {
+      "title": "Mail-Reader Automation (NLP/ML)",
+      "icon": "📧",
+      "problem": "Automate email categorization, summarization, and spam detection at scale. Process 500+ emails daily with 89% accuracy.",
+      "description": "Deployed supervised learning model for email classification. Implemented NLP pipeline for spam detection and priority categorization. Integrated with Gmail/Outlook APIs. Reduced manual email handling by 30%.",
+      "impact": [
+        { "value": "89%", "label": "Accuracy" },
+        { "value": "500+", "label": "Daily Volume" },
+        { "value": "30%", "label": "Time Saved" }
+      ],
+      "stack": ["Python", "TensorFlow", "NLP", "scikit-learn", "Flask"]
+    },
+    {
+      "title": "Real-Time Chat Application",
+      "icon": "💬",
+      "problem": "Build a scalable, secure messaging platform supporting 100+ concurrent users with <50ms latency.",
+      "description": "Developed end-to-end encrypted messaging with Socket.IO for real-time sync. Implemented Redis for session management and message caching. MongoDB for persistence. Achieved <50ms latency with 50MB file sharing.",
+      "impact": [
+        { "value": "100+", "label": "Concurrent Users" },
+        { "value": "<50ms", "label": "Latency" },
+        { "value": "E2E", "label": "Encrypted" }
+      ],
+      "stack": ["React", "Node.js", "Socket.IO", "MongoDB", "Redis"]
+    }
+  ]
+}
+

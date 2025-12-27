@@ -1,0 +1,39 @@
+/* ===== 07-3D-ELEMENTS.CSS ===== */
+/* Canvas styling and 3D section treatment. */
+
+#three-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-3d-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.hero-status {
+    position: absolute;
+    top: var(--space-8);
+    right: var(--space-8);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid var(--color-cyan);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    color: var(--color-cyan);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+

@@ -1,0 +1,144 @@
+/* ===== 09-RESPONSIVE.CSS ===== */
+/* Mobile, tablet, desktop optimization. */
+
+@media (max-width: 768px) {
+    :root {
+        --font-size-5xl: 48px;
+        --font-size-4xl: 36px;
+        --font-size-3xl: 28px;
+    }
+    
+    section {
+        padding: var(--space-8) 0;
+    }
+    
+    .proof-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .operation-card {
+        grid-template-columns: 1fr !important;
+        direction: ltr !important;
+    }
+    
+    .operation-card > * {
+        direction: ltr !important;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-body,
+    .timeline-item:nth-child(even) .timeline-body {
+        grid-column: 1;
+        text-align: left;
+        margin-left: 60px;
+    }
+    
+    .timeline-dot {
+        left: 20px;
+    }
+    
+    .hero-metrics {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-6);
+    }
+    
+    .command-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-size-5xl: 36px;
+        --font-size-4xl: 28px;
+        --font-size-3xl: 24px;
+        --font-size-2xl: 20px;
+    }
+    
+    .hero-metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 0 var(--space-4);
+    }
+    
+    .skill-vault {
+        padding: var(--space-6);
+        min-height: auto;
+    }
+    
+    .operation-card {
+        padding: var(--space-6);
+    }
+    
+    .command-core {
+        padding: var(--space-8);
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+}
+
+/* Large screens */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1600px;
+    }
+    
+    .hero-container {
+        max-width: 1000px;
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .metal-panel {
+        backdrop-filter: blur(20px);
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .boot-sequence {
+        display: none !important;
+    }
+    
+    body.boot-mode .content {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+

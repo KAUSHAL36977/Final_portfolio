@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#050507">
+    <meta name="description" content="Kaushal Kumar. Elite full-stack engineer. AI systems. Real 3D. Zero compromises.">
+    <meta name="og:title" content="Kaushal Kumar — Digital Architect">
+    <meta name="og:description" content="Systems that scale. Code that ships. 3D-driven identity.">
+    <meta name="og:image" content="https://kaushal.dev/og-image.png">
+    
+    <title>Kaushal Kumar — System Core</title>
+    
+    <!-- PRELOAD CRITICAL RESOURCES -->
+    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
+    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style">
+    
+    <!-- CRITICAL CSS (INLINE FOR SPEED) -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --color-void: #050507;
+            --color-obsidian: #0B0B10;
+            --color-gunmetal: #111118;
+            --color-carbon: #1A1A22;
+            --color-platinum: #E6E9F0;
+            --color-gold: #D4AF37;
+            --color-silver: #C9CCD6;
+            --color-cyan: #00F5FF;
+            --color-violet: #7B2FF7;
+            --font-primary: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        
+        html {
+            background: var(--color-void);
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: var(--color-void);
+            color: var(--color-platinum);
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* CRITICAL PAINT: HIDE UNTIL READY */
+        body.boot-mode .content { opacity: 0; }
+        body.ready .boot-sequence { opacity: 0; pointer-events: none; }
+    </style>
+    
+    <!-- EXTERNAL CSS (NON-CRITICAL) -->
+    <link rel="stylesheet" href="css/00-reset.css">
+    <link rel="stylesheet" href="css/01-variables.css">
+    <link rel="stylesheet" href="css/02-darkness.css">
+    <link rel="stylesheet" href="css/03-metals.css">
+    <link rel="stylesheet" href="css/04-typography.css">
+    <link rel="stylesheet" href="css/05-layout.css">
+    <link rel="stylesheet" href="css/06-components.css">
+    <link rel="stylesheet" href="css/07-3d-elements.css">
+    <link rel="stylesheet" href="css/08-animations.css">
+    <link rel="stylesheet" href="css/09-responsive.css">
+    
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="boot-mode">
+    
+    <!-- ===== BOOT SEQUENCE ===== -->
+    <div id="boot-sequence" class="boot-sequence">
+        <div class="boot-container">
+            <div class="boot-logo">⬛</div>
+            <div class="boot-text">
+                <span class="boot-line">$ INITIALIZING SYSTEM</span>
+                <span class="boot-line">$ LOADING CORE ARCHITECTURE</span>
+                <span class="boot-line">$ ESTABLISHING IDENTITY</span>
+                <span class="boot-line">$ READY.</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="content">
+        
+        <!-- SCROLL DEPTH INDICATOR -->
+        <div class="scroll-indicator">
+            <div class="scroll-progress"></div>
+        </div>
+        
+        <!-- ===== HERO / SYSTEM CORE ===== -->
+        <section id="hero" class="hero system-core">
+            <!-- 3D CANVAS -->
+            <canvas id="three-canvas"></canvas>
+            
+            <div class="hero-overlay">
+                <div class="hero-container">
+                    <!-- 3D IDENTITY OBJECT (RENDERED IN THREE.JS) -->
+                    <div class="hero-3d-wrapper">
+                        <div class="hero-status">SYSTEM ONLINE</div>
+                    </div>
+                    
+                    <!-- TEXT LAYER -->
+                    <div class="hero-text">
+                        <h1 class="hero-title" data-splitting>
+                            I build systems that scale.
+                        </h1>
+                        <p class="hero-subtitle">
+                            Full-stack products. AI-driven backends. Real impact.
+                        </p>
+                        
+                        <div class="hero-metrics">
+                            <div class="metric-item">
+                                <span class="metric-number">100+</span>
+                                <span class="metric-label">LeetCode Problems</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-number">50+</span>
+                                <span class="metric-label">GitHub Repos</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-number">1000+</span>
+                                <span class="metric-label">Active Users</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-number">99.8%</span>
+                                <span class="metric-label">Uptime Record</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-cta">
+                            <button class="btn btn-primary" data-target="proof">
+                                <span>EXPLORE</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path stroke="currentColor" stroke-width="2" d="M2 8h12M8 2l6 6-6 6"/>
+                                </svg>
+                            </button>
+                            <button class="btn btn-secondary" data-target="contact">
+                                <span>INITIATE</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path stroke="currentColor" stroke-width="2" d="M2 14l12-12M14 2H2v12h12z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== PROOF OF SKILL ===== -->
+        <section id="proof" class="proof-section">
+            <div class="container">
+                <h2 class="section-title">PROOF OF SKILL</h2>
+                <p class="section-subtitle">Not a list. A system.</p>
+                
+                <div class="proof-grid" id="proof-grid">
+                    <!-- SKILL VAULTS (POPULATED FROM skills.json) -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== PROJECTS / OPERATIONS LOG ===== -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2 class="section-title">OPERATIONS LOG</h2>
+                <p class="section-subtitle">Mission briefings. Real constraints. Executed solutions.</p>
+                
+                <div class="operations-container" id="operations-container">
+                    <!-- PROJECT CARDS (POPULATED FROM projects.json) -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== ENGINEERING DOCTRINE ===== -->
+        <section id="philosophy" class="doctrine-section">
+            <div class="container">
+                <h2 class="section-title">ENGINEERING DOCTRINE</h2>
+                <p class="section-subtitle">Opinionated. Tested in production. No fluff.</p>
+                
+                <div class="doctrine-grid" id="doctrine-grid">
+                    <!-- PRINCIPLES (POPULATED FROM content.json) -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== TIMELINE / CREDIBILITY ===== -->
+        <section id="timeline" class="timeline-section">
+            <div class="container">
+                <h2 class="section-title">EVOLUTION</h2>
+                <p class="section-subtitle">The journey. The learning. The execution.</p>
+                
+                <div class="timeline-wrapper">
+                    <div class="timeline" id="timeline-container">
+                        <!-- TIMELINE ITEMS (POPULATED FROM timeline.json) -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== COMMAND CENTER (CTA) ===== -->
+        <section id="contact" class="command-section">
+            <div class="container">
+                <div class="command-core">
+                    <h2 class="command-title">INITIATE COLLABORATION</h2>
+                    <p class="command-subtitle">
+                        I'm building AI systems, scaling infrastructure, and shipping real products.
+                        <br>Interested in ambitious problems? Let's talk.
+                    </p>
+                    
+                    <div class="command-actions">
+                        <a href="mailto:kau333halkumar@gmail.com" class="btn btn-gold">
+                            <span>SEND MESSAGE</span>
+                        </a>
+                        <a href="https://linkedin.com/in/kaushalkumar-engineer36977" target="_blank" class="btn btn-outline">
+                            <span>CONNECT</span>
+                        </a>
+                        <a href="https://github.com/KAUSHAL36977" target="_blank" class="btn btn-outline">
+                            <span>VIEW CODE</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <span class="footer-year">© 2025</span>
+                        <span class="footer-name">KAUSHAL KUMAR</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="https://github.com/KAUSHAL36977" target="_blank">GITHUB</a>
+                        <a href="https://linkedin.com/in/kaushalkumar-engineer36977" target="_blank">LINKEDIN</a>
+                        <a href="https://kaushal.dev" target="_blank">MAIN SITE</a>
+                        <a href="mailto:kau333halkumar@gmail.com">EMAIL</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+    </div>
+    
+    <!-- SCRIPTS (DEFERRED) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    
+    <script src="js/config.js"></script>
+    <script src="js/ui-system.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/three-objects.js"></script>
+    <script src="js/three-world.js"></script>
+    <script src="js/three-interactions.js"></script>
+    <script src="js/scroll-depth.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
+

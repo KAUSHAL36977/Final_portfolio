@@ -1,0 +1,88 @@
+/* ===== 06-COMPONENTS.CSS ===== */
+/* Reusable button, card, input components. */
+
+/* BUTTONS */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    font-family: var(--font-primary);
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-in-out);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 4px;
+}
+
+.btn svg {
+    width: 1em;
+    height: 1em;
+}
+
+/* PRIMARY BUTTON */
+.btn-primary {
+    background: var(--color-cyan);
+    color: var(--bg-primary);
+    border: 2px solid var(--color-cyan);
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+    box-shadow: var(--shadow-glow-strong);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* SECONDARY BUTTON */
+.btn-secondary {
+    background: transparent;
+    color: var(--color-cyan);
+    border: 2px solid var(--color-cyan);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 245, 255, 0.1);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+/* GOLD BUTTON */
+.btn-gold {
+    background: var(--color-gold);
+    color: var(--bg-primary);
+    border: 2px solid var(--color-gold);
+    font-weight: 700;
+}
+
+.btn-gold:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+/* OUTLINE BUTTON */
+.btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-color-light);
+}
+
+.btn-outline:hover {
+    border-color: var(--text-primary);
+    background: rgba(230, 233, 240, 0.05);
+}
+

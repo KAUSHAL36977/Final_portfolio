@@ -1,0 +1,25 @@
+{
+  "timeline": [
+    {
+      "year": 2025,
+      "title": "Campus Ambassador, Internshala",
+      "detail": "Promoting internships to 500+ students. 40% engagement growth. Building recruitment strategies at scale."
+    },
+    {
+      "year": 2024,
+      "title": "Full-Stack Intern, Optimus Expert",
+      "detail": "Shipped React/Node.js/MongoDB apps. 1,000+ users, 99.8% uptime. CI/CD automation, NLP/ML workflows, React Native mobile apps."
+    },
+    {
+      "year": 2023,
+      "title": "Blockchain Engineer, Metacrafters",
+      "detail": "Ethereum/Polygon program. Smart contracts, dApps, DeFi protocols. 500+ transactions. ETH PROOF & JS PROOF certified."
+    },
+    {
+      "year": 2022,
+      "title": "Started @ Chandigarh University",
+      "detail": "BE - Computer Science & Engineering. CGPA 7.2. Smart India Hackathon 2025 participant. Competitive programming (HackerRank 5-star)."
+    }
+  ]
+}
+

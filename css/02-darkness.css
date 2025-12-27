@@ -1,0 +1,112 @@
+/* ===== 02-DARKNESS.CSS ===== */
+/* Core dark mode. No light mode. Only obsidian, void, and metal. */
+
+html {
+    background-color: var(--bg-primary);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    line-height: var(--line-height-normal);
+    overflow-x: hidden;
+}
+
+/* BOOT SEQUENCE STYLING */
+.boot-sequence {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.boot-sequence.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.boot-container {
+    text-align: center;
+}
+
+.boot-logo {
+    font-size: 4rem;
+    margin-bottom: var(--space-8);
+    animation: bootBounce 1.2s ease-in-out infinite;
+}
+
+.boot-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    color: var(--color-cyan);
+    letter-spacing: 0.05em;
+}
+
+.boot-line {
+    opacity: 0;
+    animation: bootLine 0.5s ease forwards;
+}
+
+.boot-line:nth-child(1) { animation-delay: 0.2s; }
+.boot-line:nth-child(2) { animation-delay: 0.6s; }
+.boot-line:nth-child(3) { animation-delay: 1s; }
+.boot-line:nth-child(4) { animation-delay: 1.4s; color: var(--color-gold); }
+
+@keyframes bootBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes bootLine {
+    0% { opacity: 0; transform: translateX(-20px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* CONTENT HIDDEN DURING BOOT */
+.content {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+body.boot-mode .content {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* SCROLL INDICATOR */
+.scroll-indicator {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 80px;
+    background: rgba(230, 233, 240, 0.1);
+    z-index: 100;
+    border-radius: 1px;
+}
+
+.scroll-progress {
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(
+        to bottom,
+        var(--color-cyan),
+        var(--color-violet)
+    );
+    box-shadow: var(--shadow-glow);
+    transition: height 0.1s ease;
+}
+

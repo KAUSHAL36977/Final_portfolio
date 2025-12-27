@@ -1,0 +1,90 @@
+/* ===== 01-VARIABLES.CSS ===== */
+/* Token system. Immutable. Everything derives from here. */
+
+:root {
+    /* COLOR SYSTEM */
+    --color-void: #050507;
+    --color-obsidian: #0B0B10;
+    --color-gunmetal: #111118;
+    --color-carbon: #1A1A22;
+    --color-platinum: #E6E9F0;
+    --color-gold: #D4AF37;
+    --color-silver: #C9CCD6;
+    --color-cyan: #00F5FF;
+    --color-violet: #7B2FF7;
+    --color-green: #39FF14;
+    
+    /* SEMANTIC COLORS */
+    --bg-primary: var(--color-void);
+    --bg-secondary: var(--color-obsidian);
+    --bg-tertiary: var(--color-gunmetal);
+    --text-primary: var(--color-platinum);
+    --text-secondary: var(--color-silver);
+    --text-tertiary: #8B8B99;
+    --accent-primary: var(--color-cyan);
+    --accent-secondary: var(--color-violet);
+    --border-color: rgba(230, 233, 240, 0.1);
+    --border-color-light: rgba(230, 233, 240, 0.2);
+    
+    /* TYPOGRAPHY */
+    --font-primary: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    --font-size-xs: 11px;
+    --font-size-sm: 13px;
+    --font-size-base: 15px;
+    --font-size-md: 17px;
+    --font-size-lg: 20px;
+    --font-size-xl: 24px;
+    --font-size-2xl: 32px;
+    --font-size-3xl: 40px;
+    --font-size-4xl: 52px;
+    --font-size-5xl: 64px;
+    --line-height-tight: 1.1;
+    --line-height-normal: 1.5;
+    --line-height-loose: 1.8;
+    
+    /* SPACING */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-7: 32px;
+    --space-8: 40px;
+    --space-9: 48px;
+    --space-10: 56px;
+    --space-11: 64px;
+    --space-12: 80px;
+    
+    /* BORDER RADIUS */
+    --radius-none: 0;
+    --radius-sm: 4px;
+    --radius-base: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    
+    /* SHADOWS */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(0, 245, 255, 0.3);
+    --shadow-glow-strong: 0 0 40px rgba(0, 245, 255, 0.5);
+    
+    /* ANIMATION */
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* BREAKPOINTS */
+    --bp-mobile: 480px;
+    --bp-tablet: 768px;
+    --bp-desktop: 1024px;
+    --bp-wide: 1440px;
+}
+

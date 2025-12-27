@@ -1,0 +1,104 @@
+/* ===== 03-METALS.CSS ===== */
+/* Platinum, Gold, Silver. Real reflection. Real luxury. */
+
+/* PLATINUM TEXT (IDENTITY) */
+.text-platinum {
+    background: linear-gradient(
+        120deg,
+        #8B8E9A,
+        #F5F7FF,
+        #B3B6C2,
+        #F5F7FF,
+        #8B8E9A
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: metalShift 8s ease-in-out infinite;
+}
+
+/* GOLD TEXT (AUTHORITY) */
+.text-gold {
+    color: var(--color-gold);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* SILVER TEXT (STRUCTURE) */
+.text-silver {
+    color: var(--color-silver);
+}
+
+/* METAL PANEL (CARD-LIKE) */
+.metal-panel {
+    background: rgba(21, 21, 32, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(230, 233, 240, 0.08);
+    border-radius: var(--radius-lg);
+    transition: all var(--duration-normal) var(--ease-in-out);
+    position: relative;
+    overflow: hidden;
+}
+
+.metal-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(230, 233, 240, 0.3),
+        transparent
+    );
+    animation: metalShine 3s ease-in-out infinite;
+}
+
+.metal-panel:hover {
+    border-color: rgba(0, 245, 255, 0.2);
+    box-shadow: var(--shadow-glow);
+}
+
+@keyframes metalShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes metalShine {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+/* GOLD BUTTON SPECIAL */
+.btn-gold {
+    background: var(--color-gold);
+    color: var(--color-void);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-gold::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(230, 233, 240, 0.2) 50%,
+        transparent 70%
+    );
+    transform: translateX(-100%);
+    z-index: -1;
+}
+
+.btn-gold:hover::before {
+    transform: translateX(100%);
+    transition: transform 0.6s ease;
+}
+

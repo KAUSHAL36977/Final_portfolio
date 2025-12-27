@@ -1,0 +1,41 @@
+{
+  "skills": [
+    {
+      "title": "Full-Stack Architecture",
+      "icon": "⚡",
+      "description": "React → Node.js → MongoDB. Designed systems serving 1,000+ concurrent users with 99.8% uptime. Real-time data sync, error handling at scale.",
+      "tags": ["React", "Node.js", "MongoDB", "Redis"]
+    },
+    {
+      "title": "AI/ML Integration",
+      "icon": "🧠",
+      "description": "Shipped email automation with 89% accuracy. Computer vision pipeline achieving 92% detection rate. LLM integration (ChatGPT) in production.",
+      "tags": ["TensorFlow", "OpenAI APIs", "NLP", "Computer Vision"]
+    },
+    {
+      "title": "Blockchain & Web3",
+      "icon": "🔗",
+      "description": "Deployed smart contracts on Ethereum/Polygon. Built dApps processing 500+ transactions. DeFi protocols, token standards, gas optimization.",
+      "tags": ["Solidity", "Web3.js", "Ethereum", "Polygon"]
+    },
+    {
+      "title": "DevOps & Shipping",
+      "icon": "📦",
+      "description": "CI/CD pipelines cutting deployment time 40%. Docker containerization. GitHub Actions automation. AWS infrastructure. Vercel deployments.",
+      "tags": ["Docker", "GitHub Actions", "AWS", "Vercel"]
+    },
+    {
+      "title": "Product Thinking",
+      "icon": "🎯",
+      "description": "Published 4.5-star fitness app. Built BOMANI for 10M+ Indian farmers. Designed systems for real constraints: bandwidth, rural connectivity, cost.",
+      "tags": ["React Native", "Firebase", "SaaS", "Product Design"]
+    },
+    {
+      "title": "Competitive Excellence",
+      "icon": "🏆",
+      "description": "HackerRank 5-star C++ developer. 100+ LeetCode problems. Smart India Hackathon participant. Active open-source contributor.",
+      "tags": ["C++", "Algorithms", "Data Structures", "Competitive"]
+    }
+  ]
+}
+
