@@ -1,81 +1,97 @@
 // ===== ANIMATIONS.JS =====
-// GSAP timelines. Orchestrated motion. Obsessive control.
+// GSAP timelines, Lenis smooth scroll integration, orchestrated motion.
 
 class AnimationEngine {
     constructor() {
-        this.timelines = {};
-        this.scrollTimeline = null;
+        this.timelines     = {};
         this.isInitialized = false;
+        this.lenis         = null;
     }
-    
+
     init() {
-        this.registerScrollAnimations();
-        this.registerButtonAnimations();
-        this.registerSectionAnimations();
+        this._initLenis();
+        this._registerButtonAnimations();
+        this._registerMetricAnimations();
         this.isInitialized = true;
     }
-    
-    registerScrollAnimations() {
-        // HERO FADE IN
-        gsap.to('.hero-text', {
-            scrollTrigger: {
-                trigger: '#hero',
-                start: 'top center',
-                end: 'bottom center',
-                scrub: 1,
-            },
-            opacity: 0.7,
-            y: -30,
+
+    /* ── Lenis smooth scroll ─────────────────────────────────────────── */
+    _initLenis() {
+        if (typeof Lenis === 'undefined') {
+            console.warn('[ANIM] Lenis not available — using native scroll.');
+            return;
+        }
+
+        this.lenis = new Lenis({
+            duration: 1.25,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            touchMultiplier: 2,
         });
-        
-        // SECTION CARDS STAGGER
-        const cards = gsap.utils.toArray('.skill-vault, .operation-card, .doctrine-card');
-        cards.forEach((card) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 80%',
-                    once: true,
-                },
-                opacity: 0,
-                y: 30,
-                duration: 0.8,
+
+        window.lenis = this.lenis; // expose globally for nav.js etc.
+
+        // Integrate with GSAP ticker
+        if (typeof gsap !== 'undefined') {
+            gsap.ticker.add((time) => {
+                this.lenis && this.lenis.raf(time * 1000);
             });
+            gsap.ticker.lagSmoothing(0);
+        } else {
+            // Fallback RAF loop
+            const raf = (time) => {
+                this.lenis.raf(time);
+                requestAnimationFrame(raf);
+            };
+            requestAnimationFrame(raf);
+        }
+    }
+
+    /* ── Button hover scale ─────────────────────────────────────────── */
+    _registerButtonAnimations() {
+        document.addEventListener('mouseover', (e) => {
+            const btn = e.target.closest('.btn');
+            if (btn && typeof gsap !== 'undefined') {
+                gsap.to(btn, { scale: CONFIG.ANIMATION.BUTTON_SCALE, duration: 0.25, ease: 'back.out(1.5)', overwrite: 'auto' });
+            }
+        });
+        document.addEventListener('mouseout', (e) => {
+            const btn = e.target.closest('.btn');
+            if (btn && typeof gsap !== 'undefined') {
+                gsap.to(btn, { scale: 1, duration: 0.25, ease: 'back.out(1.5)', overwrite: 'auto' });
+            }
+        });
+        document.addEventListener('mousedown', (e) => {
+            const btn = e.target.closest('.btn');
+            if (btn && typeof gsap !== 'undefined') {
+                gsap.to(btn, { scale: 0.96, duration: 0.12, overwrite: 'auto' });
+            }
+        });
+        document.addEventListener('mouseup', (e) => {
+            const btn = e.target.closest('.btn');
+            if (btn && typeof gsap !== 'undefined') {
+                gsap.to(btn, { scale: 1, duration: 0.25, ease: 'back.out(1.5)', overwrite: 'auto' });
+            }
         });
     }
-    
-    registerButtonAnimations() {
-        document.querySelectorAll('.btn').forEach((btn) => {
-            btn.addEventListener('mouseenter', () => {
-                gsap.to(btn, {
-                    scale: 1.05,
-                    duration: 0.3,
-                    ease: 'back.out',
-                });
-            });
-            
-            btn.addEventListener('mouseleave', () => {
-                gsap.to(btn, {
-                    scale: 1,
-                    duration: 0.3,
-                    ease: 'back.out',
-                });
-            });
-        });
-    }
-    
-    registerSectionAnimations() {
-        // STAGGER HERO METRICS
+
+    /* ── Metric items initial fade ──────────────────────────────────── */
+    _registerMetricAnimations() {
+        if (typeof gsap === 'undefined') return;
+        const bootDelay = CONFIG.ANIMATION.BOOT_DURATION / 1000;
         gsap.from('.metric-item', {
             opacity: 0,
             y: 20,
-            stagger: 0.1,
+            stagger: 0.12,
             duration: 0.6,
-            delay: 2.7, // After boot sequence
+            delay: bootDelay + 0.5,
             ease: 'power2.out',
         });
     }
 }
 
 const animationEngine = new AnimationEngine();
+
 
