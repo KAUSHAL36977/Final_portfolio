@@ -163,7 +163,7 @@ class ScrollStories {
         if (!container || !track) return;
 
         // On mobile, use native scroll — skip GSAP pin
-        if (window.innerWidth <= 768) return;
+        if (window.innerWidth <= (typeof CONFIG !== 'undefined' ? CONFIG.BREAKPOINT_TABLET : 768)) return;
 
         const getShift = () => track.scrollWidth - container.clientWidth;
 

@@ -255,6 +255,13 @@
     align-self: flex-start;
 }
 
+@media (max-width: 600px) {
+    .contact-submit {
+        align-self: stretch;
+        justify-content: center;
+    }
+}
+
 .contact-success {
     font-family: var(--font-mono);
     font-size: var(--font-size-sm);

@@ -596,7 +596,8 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').catch(() => {});
+                navigator.serviceWorker.register('./sw.js')
+                    .catch((err) => console.warn('[SW] Registration failed:', err.message));
             });
         }
 
@@ -725,10 +726,11 @@
                             throw new Error('Network response was not ok');
                         }
                     } catch {
-                        // Fallback: open mailto
-                        const name    = form.querySelector('[name="name"]').value;
-                        const message = form.querySelector('[name="message"]').value;
-                        window.location.href = `mailto:kau333halkumar@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
+                        // Fallback: open mailto with sanitized, length-limited values
+                        const rawName    = (form.querySelector('[name="name"]').value    || '').slice(0, 80);
+                        const rawMessage = (form.querySelector('[name="message"]').value || '').slice(0, 500);
+                        const subject    = `Portfolio Contact from ${rawName}`;
+                        window.location.href = `mailto:kau333halkumar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(rawMessage)}`;
                         if (btn) { btn.disabled = false; btn.querySelector('span').textContent = 'TRANSMIT'; }
                     }
                 });

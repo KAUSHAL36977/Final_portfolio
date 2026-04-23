@@ -79,7 +79,7 @@ self.addEventListener('fetch', (event) => {
     if (request.method !== 'GET' || url.origin !== self.location.origin) return;
 
     // GitHub API — network only (live data)
-    if (url.pathname.startsWith('/api.github.com')) return;
+    if (url.hostname === 'api.github.com') return;
 
     event.respondWith(
         caches.open(STATIC_CACHE).then(async (cache) => {

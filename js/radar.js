@@ -121,8 +121,12 @@ class SkillsRadar {
             const circle = document.createElementNS(svgNS, 'circle');
             circle.setAttribute('cx', dx.toFixed(2));
             circle.setAttribute('cy', dy.toFixed(2));
+            const pct = Math.round(this.skills[i].value * 100);
             circle.setAttribute('r', '5');
             circle.classList.add('radar-dot');
+            const titleEl = document.createElementNS(svgNS, 'title');
+            titleEl.textContent = `${this.skills[i].label}: ${pct}% proficiency`;
+            circle.appendChild(titleEl);
 
             if (!this.reduceMotion) {
                 // Start at center, animate outward
