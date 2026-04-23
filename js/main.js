@@ -50,6 +50,7 @@ class KaushalPortfolio {
         skillConstellation.setSkills(this.data.skills);
         skillConstellation.init();
         gitHubActivity.init();
+        if (typeof skillsRadar !== 'undefined') skillsRadar.init();
 
         // ── Scroll-driven stories (needs DOM + GSAP) ─────────────────
         if (typeof gsap !== 'undefined') {

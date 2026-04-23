@@ -73,7 +73,9 @@ class ScrollStories {
 
     /* ——— Clip-path curtain reveal for section titles ——— */
     _sectionTitles() {
+        // Skip elements already handled by the reveal-on-scroll IntersectionObserver
         gsap.utils.toArray('.section-title').forEach(el => {
+            if (el.classList.contains('reveal-on-scroll')) return;
             gsap.fromTo(el,
                 { clipPath: 'inset(0 100% 0 0)' },
                 {
@@ -86,6 +88,7 @@ class ScrollStories {
         });
 
         gsap.utils.toArray('.section-subtitle').forEach(el => {
+            if (el.classList.contains('reveal-on-scroll')) return;
             gsap.from(el, {
                 opacity: 0,
                 y: 18,

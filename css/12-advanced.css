@@ -761,10 +761,6 @@
 /* ═══════════════════════════════════════
    PROOF-OF-SKILL / SECTION TITLE REVEALS
 ═══════════════════════════════════════ */
-.section-title {
-    clip-path: inset(0 100% 0 0);
-    will-change: clip-path;
-}
 
 .section-title.title-revealed {
     clip-path: inset(0 0% 0 0);

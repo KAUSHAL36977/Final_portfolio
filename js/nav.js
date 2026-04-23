@@ -8,7 +8,7 @@ class AdvancedNav {
         this.underliner  = null;
         this.activeLink  = null;
         this.mobileOpen  = false;
-        this.sections    = ['hero', 'proof', 'projects', 'philosophy', 'timeline', 'github', 'contact'];
+        this.sections    = ['hero', 'about', 'proof', 'projects', 'philosophy', 'timeline', 'github', 'contact'];
     }
 
     init() {
@@ -33,6 +33,7 @@ class AdvancedNav {
 
                 <div class="nav-links" role="list">
                     <a href="#hero"       class="nav-link" data-section="hero"       role="listitem">HOME</a>
+                    <a href="#about"      class="nav-link" data-section="about"      role="listitem">ABOUT</a>
                     <a href="#proof"      class="nav-link" data-section="proof"      role="listitem">SKILLS</a>
                     <a href="#projects"   class="nav-link" data-section="projects"   role="listitem">WORK</a>
                     <a href="#philosophy" class="nav-link" data-section="philosophy" role="listitem">DOCTRINE</a>
@@ -59,6 +60,7 @@ class AdvancedNav {
                  role="dialog" aria-label="Navigation menu" aria-hidden="true">
                 <div class="nav-mobile-links">
                     <a href="#hero"       class="nav-mobile-link" data-section="hero">HOME</a>
+                    <a href="#about"      class="nav-mobile-link" data-section="about">ABOUT</a>
                     <a href="#proof"      class="nav-mobile-link" data-section="proof">SKILLS</a>
                     <a href="#projects"   class="nav-mobile-link" data-section="projects">WORK</a>
                     <a href="#philosophy" class="nav-mobile-link" data-section="philosophy">DOCTRINE</a>
