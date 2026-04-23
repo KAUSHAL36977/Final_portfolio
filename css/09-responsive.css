@@ -131,14 +131,28 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
+
+    html {
+        scroll-behavior: auto !important;
+    }
+
     .boot-sequence {
         display: none !important;
     }
-    
+
     body.boot-mode .content {
         opacity: 1;
         visibility: visible;
+    }
+
+    #cursor-spotlight,
+    #cursor-dot,
+    #cursor-ring {
+        display: none !important;
+    }
+
+    .metal-panel:hover {
+        transform: none;
     }
 }
 

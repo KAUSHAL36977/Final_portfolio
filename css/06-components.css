@@ -37,6 +37,11 @@
     color: var(--bg-primary);
     border: 2px solid var(--color-cyan);
     box-shadow: var(--shadow-glow);
+    position: relative;
+}
+
+.btn-primary::after {
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .btn-primary:hover {

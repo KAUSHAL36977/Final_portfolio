@@ -4,59 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#050507">
-    <meta name="description" content="Kaushal Kumar. Elite full-stack engineer. AI systems. Real 3D. Zero compromises.">
-    <meta name="og:title" content="Kaushal Kumar — Digital Architect">
-    <meta name="og:description" content="Systems that scale. Code that ships. 3D-driven identity.">
-    <meta name="og:image" content="https://kaushal.dev/og-image.png">
-    
+
+    <!-- ─── SEO / Social ─────────────────────────────────────────────────── -->
+    <meta name="description"        content="Kaushal Kumar — Full-Stack Engineer, AI Systems Builder. Portfolio showcasing real-world products, blockchain dApps, and computer vision.">
+    <meta name="keywords"           content="Kaushal Kumar, full-stack engineer, AI developer, React, Node.js, TensorFlow, Solidity, portfolio">
+    <meta name="author"             content="Kaushal Kumar">
+    <meta name="robots"             content="index, follow">
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://kaushal36977.github.io/Final_portfolio/">
+    <meta property="og:title"       content="Kaushal Kumar — System Core">
+    <meta property="og:description" content="Systems that scale. Code that ships. AI-driven backends.">
+    <meta property="og:image"       content="https://kaushal36977.github.io/Final_portfolio/og-image.png">
+    <meta name="twitter:card"       content="summary_large_image">
+    <meta name="twitter:title"      content="Kaushal Kumar — System Core">
+    <meta name="twitter:description" content="Full-Stack Engineer · AI Systems Builder · Open Source Dev">
+    <meta name="twitter:image"      content="https://kaushal36977.github.io/Final_portfolio/og-image.png">
+
     <title>Kaushal Kumar — System Core</title>
-    
-    <!-- PRELOAD CRITICAL RESOURCES -->
-    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
-    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style">
-    
-    <!-- CRITICAL CSS (INLINE FOR SPEED) -->
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <!-- ─── JSON-LD Person Schema ─────────────────────────────────────── -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Kaushal Kumar",
+        "jobTitle": "Full-Stack Engineer",
+        "url": "https://kaushal36977.github.io/Final_portfolio/",
+        "sameAs": [
+            "https://github.com/KAUSHAL36977",
+            "https://linkedin.com/in/kaushalkumar-engineer36977"
+        ]
+    }
+    </script>
+
+    <!-- ─── Resource hints ───────────────────────────────────────────── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://api.github.com">
+
+    <!-- ─── CRITICAL CSS (inline) ────────────────────────────────────── -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
         :root {
-            --color-void: #050507;
-            --color-obsidian: #0B0B10;
-            --color-gunmetal: #111118;
-            --color-carbon: #1A1A22;
-            --color-platinum: #E6E9F0;
-            --color-gold: #D4AF37;
-            --color-silver: #C9CCD6;
-            --color-cyan: #00F5FF;
-            --color-violet: #7B2FF7;
-            --font-primary: 'Space Grotesk', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            --color-void:#050507; --color-obsidian:#0B0B10;
+            --color-gunmetal:#111118; --color-carbon:#1A1A22;
+            --color-platinum:#E6E9F0; --color-gold:#D4AF37;
+            --color-silver:#C9CCD6; --color-cyan:#00F5FF;
+            --color-violet:#7B2FF7; --color-green:#3FB950;
+            --bg-primary:#050507; --bg-secondary:#0B0B10;
+            --text-primary:#E6E9F0; --text-secondary:#C9CCD6; --text-tertiary:#8B8B99;
+            --border-color:rgba(230,233,240,.10);
+            --border-color-light:rgba(230,233,240,.18);
+            --shadow-glow:0 0 20px rgba(0,245,255,.30);
+            --shadow-glow-strong:0 0 40px rgba(0,245,255,.55);
+            --font-primary:'Space Grotesk',sans-serif;
+            --font-mono:'JetBrains Mono',monospace;
         }
-        
-        html {
-            background: var(--color-void);
-            scroll-behavior: smooth;
-        }
-        
+        html { background:var(--color-void); scroll-behavior:auto; }
         body {
-            background: var(--color-void);
-            color: var(--color-platinum);
-            font-family: var(--font-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background:var(--color-void); color:var(--color-platinum);
+            font-family:var(--font-primary); line-height:1.6; overflow-x:hidden;
         }
-        
-        /* CRITICAL PAINT: HIDE UNTIL READY */
-        body.boot-mode .content { opacity: 0; }
-        body.ready .boot-sequence { opacity: 0; pointer-events: none; }
+        body.boot-mode .content { opacity:0; visibility:hidden; }
+        body.ready .boot-sequence { display:none !important; }
     </style>
-    
-    <!-- EXTERNAL CSS (NON-CRITICAL) -->
+
+    <!-- ─── Google Fonts ─────────────────────────────────────────────── -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- ─── External CSS ─────────────────────────────────────────────── -->
     <link rel="stylesheet" href="css/00-reset.css">
     <link rel="stylesheet" href="css/01-variables.css">
     <link rel="stylesheet" href="css/02-darkness.css">
@@ -67,54 +89,129 @@
     <link rel="stylesheet" href="css/07-3d-elements.css">
     <link rel="stylesheet" href="css/08-animations.css">
     <link rel="stylesheet" href="css/09-responsive.css">
-    
-    <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/10-cursor.css">
+    <link rel="stylesheet" href="css/11-nav.css">
+    <link rel="stylesheet" href="css/12-advanced.css">
 </head>
 <body class="boot-mode">
-    
-    <!-- ===== BOOT SEQUENCE ===== -->
-    <div id="boot-sequence" class="boot-sequence">
+
+    <!-- ─── A11Y: Skip to content ─────────────────────────────────── -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- ─── Custom cursor (aria-hidden, pointer-only) ─────────────── -->
+    <div id="cursor-dot"  aria-hidden="true"></div>
+    <div id="cursor-ring" aria-hidden="true"></div>
+
+    <!-- ─── Ambient cursor spotlight ─────────────────────────────── -->
+    <div id="cursor-spotlight" aria-hidden="true"></div>
+
+    <!-- ─── Film-grain canvas overlay ────────────────────────────── -->
+    <canvas id="grain-canvas" aria-hidden="true"></canvas>
+
+    <!-- ─── Cinematic boot sequence ──────────────────────────────── -->
+    <div id="boot-sequence" class="boot-sequence" role="status" aria-live="polite" aria-label="Loading">
         <div class="boot-container">
-            <div class="boot-logo">⬛</div>
-            <div class="boot-text">
-                <span class="boot-line">$ INITIALIZING SYSTEM</span>
-                <span class="boot-line">$ LOADING CORE ARCHITECTURE</span>
-                <span class="boot-line">$ ESTABLISHING IDENTITY</span>
-                <span class="boot-line">$ READY.</span>
+            <div class="boot-ascii-wrapper">
+                <pre class="boot-ascii" aria-hidden="true"> ██╗  ██╗    ██╗  ██╗
+ ██║ ██╔╝    ██║ ██╔╝
+ █████╔╝     █████╔╝
+ ██╔═██╗     ██╔═██╗
+ ██║  ██╗    ██║  ██╗
+ ╚═╝  ╚═╝    ╚═╝  ╚═╝
+   KAUSHAL KUMAR
+   DIGITAL ARCHITECT</pre>
+            </div>
+
+            <div class="boot-diagnostics">
+                <div class="diag-row">
+                    <span class="diag-label">CPU</span>
+                    <div class="diag-bar"><div class="diag-fill" style="--target:87%"></div></div>
+                    <span class="diag-value">87%</span>
+                </div>
+                <div class="diag-row">
+                    <span class="diag-label">RAM</span>
+                    <div class="diag-bar"><div class="diag-fill" style="--target:62%"></div></div>
+                    <span class="diag-value">62%</span>
+                </div>
+                <div class="diag-row">
+                    <span class="diag-label">GPU</span>
+                    <div class="diag-bar"><div class="diag-fill" style="--target:94%"></div></div>
+                    <span class="diag-value">94%</span>
+                </div>
+                <div class="diag-row">
+                    <span class="diag-label">NET</span>
+                    <div class="diag-bar"><div class="diag-fill" style="--target:100%"></div></div>
+                    <span class="diag-value">OK</span>
+                </div>
+            </div>
+
+            <div class="boot-progress-wrapper">
+                <div class="boot-progress-track">
+                    <div class="boot-progress-fill" id="boot-progress-fill"></div>
+                </div>
+                <div class="boot-progress-info">
+                    <span class="boot-status" id="boot-status">INITIALIZING CORE</span>
+                    <span class="boot-percent" id="boot-percent">0%</span>
+                </div>
             </div>
         </div>
     </div>
-    
-    <!-- ===== MAIN CONTENT ===== -->
-    <div class="content">
-        
-        <!-- SCROLL DEPTH INDICATOR -->
-        <div class="scroll-indicator">
+
+    <!-- ─── HACKER MODE overlay (Konami code easter egg) ─────────── -->
+    <div id="hacker-overlay" class="hacker-overlay" aria-hidden="true" role="dialog" aria-label="Hacker mode activated">
+        <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+        <div class="hacker-ui">
+            <pre class="hacker-ascii">
+ ██╗  ██╗ █████╗  ██████╗██╗  ██╗███████╗██████╗
+ ██║  ██║██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗
+ ███████║███████║██║     █████╔╝ █████╗  ██████╔╝
+ ██╔══██║██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗
+ ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║
+ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+     MODE — ACTIVATED — ESC TO EXIT</pre>
+            <button id="hacker-exit" class="hacker-exit-btn">[ EXIT HACKER MODE ]</button>
+        </div>
+    </div>
+
+    <!-- ─── Konami hint (barely visible) ─────────────────────────── -->
+    <div class="hacker-konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</div>
+
+    <!-- ─────────────────────────────────────────────────────────────── -->
+    <!--  MAIN CONTENT                                                   -->
+    <!-- ─────────────────────────────────────────────────────────────── -->
+    <div class="content" id="main-content">
+
+        <!-- Scroll progress bar (left edge) -->
+        <div class="scroll-indicator" aria-hidden="true">
             <div class="scroll-progress"></div>
         </div>
-        
-        <!-- ===== HERO / SYSTEM CORE ===== -->
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!--  HERO                                                       -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <section id="hero" class="hero system-core">
-            <!-- 3D CANVAS -->
-            <canvas id="three-canvas"></canvas>
-            
+            <!-- Three.js canvas -->
+            <canvas id="three-canvas" aria-hidden="true"></canvas>
+
             <div class="hero-overlay">
                 <div class="hero-container">
-                    <!-- 3D IDENTITY OBJECT (RENDERED IN THREE.JS) -->
                     <div class="hero-3d-wrapper">
-                        <div class="hero-status">SYSTEM ONLINE</div>
+                        <div class="hero-status" aria-live="polite">SYSTEM ONLINE</div>
                     </div>
-                    
-                    <!-- TEXT LAYER -->
+
                     <div class="hero-text">
-                        <h1 class="hero-title" data-splitting>
-                            I build systems that scale.
-                        </h1>
+                        <h1 class="hero-title">I build systems that scale.</h1>
+
+                        <!-- Scramble role cycling -->
+                        <div class="hero-role-wrapper" aria-live="polite">
+                            <span class="hero-role-label" aria-hidden="true">→</span>
+                            <span class="hero-role-scramble">FULL-STACK ENGINEER</span>
+                        </div>
+
                         <p class="hero-subtitle">
                             Full-stack products. AI-driven backends. Real impact.
                         </p>
-                        
+
                         <div class="hero-metrics">
                             <div class="metric-item">
                                 <span class="metric-number">100+</span>
@@ -133,17 +230,17 @@
                                 <span class="metric-label">Uptime Record</span>
                             </div>
                         </div>
-                        
+
                         <div class="hero-cta">
                             <button class="btn btn-primary" data-target="proof">
                                 <span>EXPLORE</span>
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                                     <path stroke="currentColor" stroke-width="2" d="M2 8h12M8 2l6 6-6 6"/>
                                 </svg>
                             </button>
                             <button class="btn btn-secondary" data-target="contact">
                                 <span>INITIATE</span>
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                                     <path stroke="currentColor" stroke-width="2" d="M2 14l12-12M14 2H2v12h12z"/>
                                 </svg>
                             </button>
@@ -152,83 +249,148 @@
                 </div>
             </div>
         </section>
-        
-        <!-- ===== PROOF OF SKILL ===== -->
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!--  PROOF OF SKILL                                            -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <section id="proof" class="proof-section">
             <div class="container">
                 <h2 class="section-title">PROOF OF SKILL</h2>
                 <p class="section-subtitle">Not a list. A system.</p>
-                
-                <div class="proof-grid" id="proof-grid">
-                    <!-- SKILL VAULTS (POPULATED FROM skills.json) -->
+
+                <!-- View toggle -->
+                <div class="proof-view-toggle" role="group" aria-label="View mode">
+                    <button class="view-btn active" data-view="grid"          aria-pressed="true">GRID</button>
+                    <button class="view-btn"         data-view="constellation" aria-pressed="false">CONSTELLATION</button>
+                </div>
+
+                <!-- Grid view (default) -->
+                <div class="proof-grid" id="proof-grid" role="list">
+                    <!-- Populated by main.js -->
+                </div>
+
+                <!-- Constellation view -->
+                <div class="constellation-view" id="constellation-view" style="display:none" aria-label="Interactive skill constellation">
+                    <canvas id="constellation-canvas"></canvas>
+                    <p class="constellation-hint" aria-hidden="true">Click a node to highlight related skills</p>
                 </div>
             </div>
         </section>
-        
-        <!-- ===== PROJECTS / OPERATIONS LOG ===== -->
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!--  PROJECTS — horizontal scroll                              -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <section id="projects" class="projects-section">
-            <div class="container">
+            <div class="projects-header container">
                 <h2 class="section-title">OPERATIONS LOG</h2>
                 <p class="section-subtitle">Mission briefings. Real constraints. Executed solutions.</p>
-                
-                <div class="operations-container" id="operations-container">
-                    <!-- PROJECT CARDS (POPULATED FROM projects.json) -->
+            </div>
+
+            <div class="h-scroll-container" aria-label="Projects — scroll horizontally">
+                <div class="h-scroll-track" id="h-scroll-track">
+                    <!-- Cards populated by main.js -->
                 </div>
             </div>
+
+            <!-- Progress dots populated by main.js -->
+            <div class="h-scroll-progress" role="tablist" aria-label="Project navigation"></div>
         </section>
-        
-        <!-- ===== ENGINEERING DOCTRINE ===== -->
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!--  ENGINEERING DOCTRINE                                      -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <section id="philosophy" class="doctrine-section">
             <div class="container">
                 <h2 class="section-title">ENGINEERING DOCTRINE</h2>
                 <p class="section-subtitle">Opinionated. Tested in production. No fluff.</p>
-                
-                <div class="doctrine-grid" id="doctrine-grid">
-                    <!-- PRINCIPLES (POPULATED FROM content.json) -->
+                <div class="doctrine-grid" id="doctrine-grid" role="list">
+                    <!-- Populated by main.js -->
                 </div>
             </div>
         </section>
-        
-        <!-- ===== TIMELINE / CREDIBILITY ===== -->
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!--  TIMELINE                                                   -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <section id="timeline" class="timeline-section">
             <div class="container">
                 <h2 class="section-title">EVOLUTION</h2>
                 <p class="section-subtitle">The journey. The learning. The execution.</p>
-                
-                <div class="timeline-wrapper">
-                    <div class="timeline" id="timeline-container">
-                        <!-- TIMELINE ITEMS (POPULATED FROM timeline.json) -->
+
+                <div class="timeline-wrapper" style="position:relative">
+                    <!-- SVG line drawn by scroll-stories.js -->
+                    <svg class="timeline-svg" aria-hidden="true" width="2" height="600">
+                        <defs>
+                            <linearGradient id="timelineGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%"   stop-color="#00F5FF" stop-opacity="0"/>
+                                <stop offset="30%"  stop-color="#00F5FF" stop-opacity="0.8"/>
+                                <stop offset="70%"  stop-color="#7B2FF7" stop-opacity="0.8"/>
+                                <stop offset="100%" stop-color="#7B2FF7" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <path class="timeline-svg-line" d="M1 0 L1 600"/>
+                    </svg>
+
+                    <div class="timeline" id="timeline-container" role="list">
+                        <!-- Populated by main.js -->
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- ===== COMMAND CENTER (CTA) ===== -->
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!--  LIVE GITHUB ACTIVITY                                      -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <section id="github" class="github-section">
+            <div class="container">
+                <h2 class="section-title">LIVE ACTIVITY</h2>
+                <p class="section-subtitle">Real commits. Real work. Right now.</p>
+
+                <div id="github-activity" class="github-activity">
+                    <div class="github-commits-panel metal-panel">
+                        <div class="github-panel-title">Recent Commits</div>
+                        <div class="github-commits">
+                            <!-- Populated by github-activity.js -->
+                            <p class="text-muted" style="font-size:12px">Loading activity…</p>
+                        </div>
+                    </div>
+                    <div class="github-heatmap-panel metal-panel">
+                        <div class="github-panel-title">Contribution Map (last 52 days)</div>
+                        <div class="github-heatmap">
+                            <!-- Populated by github-activity.js -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!--  COMMAND CENTER (CONTACT)                                  -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <section id="contact" class="command-section">
             <div class="container">
-                <div class="command-core">
+                <div class="command-core glass-panel">
                     <h2 class="command-title">INITIATE COLLABORATION</h2>
                     <p class="command-subtitle">
-                        I'm building AI systems, scaling infrastructure, and shipping real products.
-                        <br>Interested in ambitious problems? Let's talk.
+                        I'm building AI systems, scaling infrastructure, and shipping real products.<br>
+                        Interested in ambitious problems? Let's talk.
                     </p>
-                    
                     <div class="command-actions">
                         <a href="mailto:kau333halkumar@gmail.com" class="btn btn-gold">
                             <span>SEND MESSAGE</span>
                         </a>
-                        <a href="https://linkedin.com/in/kaushalkumar-engineer36977" target="_blank" class="btn btn-outline">
-                            <span>CONNECT</span>
+                        <a href="https://linkedin.com/in/kaushalkumar-engineer36977" target="_blank" rel="noopener" class="btn btn-outline">
+                            <span>LINKEDIN</span>
                         </a>
-                        <a href="https://github.com/KAUSHAL36977" target="_blank" class="btn btn-outline">
-                            <span>VIEW CODE</span>
+                        <a href="https://github.com/KAUSHAL36977" target="_blank" rel="noopener" class="btn btn-outline">
+                            <span>GITHUB</span>
                         </a>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- ===== FOOTER ===== -->
+
+        <!-- ─── Footer ────────────────────────────────────────────── -->
         <footer class="footer">
             <div class="container">
                 <div class="footer-content">
@@ -237,22 +399,43 @@
                         <span class="footer-name">KAUSHAL KUMAR</span>
                     </div>
                     <div class="footer-links">
-                        <a href="https://github.com/KAUSHAL36977" target="_blank">GITHUB</a>
-                        <a href="https://linkedin.com/in/kaushalkumar-engineer36977" target="_blank">LINKEDIN</a>
-                        <a href="https://kaushal.dev" target="_blank">MAIN SITE</a>
+                        <a href="https://github.com/KAUSHAL36977"                        target="_blank" rel="noopener">GITHUB</a>
+                        <a href="https://linkedin.com/in/kaushalkumar-engineer36977"     target="_blank" rel="noopener">LINKEDIN</a>
                         <a href="mailto:kau333halkumar@gmail.com">EMAIL</a>
                     </div>
                 </div>
             </div>
         </footer>
-        
-    </div>
-    
-    <!-- SCRIPTS (DEFERRED) -->
+
+    </div><!-- /.content -->
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SCRIPTS
+    ═══════════════════════════════════════════════════════════════ -->
+
+    <!-- Three.js core -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Three.js EffectComposer + UnrealBloom (legacy non-module build) -->
+    <script src="https://unpkg.com/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+
+    <!-- GSAP + plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    
+
+    <!-- Lenis smooth scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <!-- SplitType (character splitting) -->
+    <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+
+    <!-- ─── App scripts (order matters) ──────────────────────────── -->
     <script src="js/config.js"></script>
     <script src="js/ui-system.js"></script>
     <script src="js/input.js"></script>
@@ -260,10 +443,65 @@
     <script src="js/three-world.js"></script>
     <script src="js/three-interactions.js"></script>
     <script src="js/scroll-depth.js"></script>
+
+    <!-- New modules -->
+    <script src="js/cursor.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/grain.js"></script>
+    <script src="js/spotlight.js"></script>
+    <script src="js/tilt.js"></script>
+    <script src="js/kinetic-text.js"></script>
+    <script src="js/counters.js"></script>
+    <script src="js/scroll-stories.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/konami.js"></script>
+    <script src="js/constellation.js"></script>
+    <script src="js/github-activity.js"></script>
+
+    <!-- Core engine -->
     <script src="js/animations.js"></script>
     <script src="js/core.js"></script>
     <script src="js/main.js"></script>
 
+    <!-- ─── Service Worker registration ──────────────────────────── -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
+            });
+        }
+
+        // Skill constellation view toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtns = document.querySelectorAll('.view-btn');
+            const gridView   = document.getElementById('proof-grid');
+            const constView  = document.getElementById('constellation-view');
+
+            toggleBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const view = btn.getAttribute('data-view');
+                    toggleBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-pressed', 'true');
+
+                    if (view === 'grid') {
+                        gridView  && (gridView.style.display  = '');
+                        constView && (constView.style.display = 'none');
+                    } else {
+                        gridView  && (gridView.style.display  = 'none');
+                        constView && (constView.style.display = 'block');
+                        // Kick off constellation if not already running
+                        if (window.skillConstellation) {
+                            skillConstellation._resize();
+                            if (!skillConstellation.rafId) skillConstellation._animate();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
+
 
