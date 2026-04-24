@@ -12,52 +12,66 @@ class KaushalPortfolio {
 
         await this.loadData();
 
-        // ── Core subsystems ─────────────────────────────────────────
-        inputTracker.init();
-        scrollDepth.init();
-        appCore.init();
+        // Helper: run a module init and warn on failure without aborting boot
+        const safeInit = (fn, name) => {
+            try { fn(); } catch (e) { console.warn(`[SYSTEM] ${name}:`, e.message); }
+        };
 
-        // ── UI modules (don't depend on data) ───────────────────────
-        advancedNav.init();
-        magneticCursor.init();
-        grainOverlay.init();
-        cursorSpotlight.init();
-        cardTilt.init();
-        themeSystem.init();
-        konamiEgg.init();
+        try {
+            // ── Core subsystems ─────────────────────────────────────────
+            safeInit(() => inputTracker.init(), 'inputTracker');
+            safeInit(() => scrollDepth.init(),  'scrollDepth');
+            safeInit(() => appCore.init(),       'appCore');
 
-        // ── 3D world ─────────────────────────────────────────────────
-        if (typeof THREE !== 'undefined') {
-            threeWorld.init();
-            threeInteractions = new ThreeInteractions(threeWorld);
-            threeInteractions.init();
-        } else {
-            console.warn('[SYSTEM] Three.js not loaded.');
+            // ── UI modules (don't depend on data) ───────────────────────
+            safeInit(() => advancedNav.init(),     'advancedNav');
+            safeInit(() => magneticCursor.init(),  'magneticCursor');
+            safeInit(() => grainOverlay.init(),    'grainOverlay');
+            safeInit(() => cursorSpotlight.init(), 'cursorSpotlight');
+            safeInit(() => cardTilt.init(),        'cardTilt');
+            safeInit(() => themeSystem.init(),     'themeSystem');
+            safeInit(() => konamiEgg.init(),       'konamiEgg');
+
+            // ── 3D world ─────────────────────────────────────────────────
+            if (typeof THREE !== 'undefined') {
+                safeInit(() => {
+                    threeWorld.init();
+                    threeInteractions = new ThreeInteractions(threeWorld);
+                    threeInteractions.init();
+                }, 'Three.js');
+            } else {
+                console.warn('[SYSTEM] Three.js not loaded.');
+            }
+
+            // ── GSAP-based animation engine ──────────────────────────────
+            if (typeof gsap !== 'undefined') {
+                safeInit(() => animationEngine.init(), 'animationEngine');
+            }
+
+            // ── Render dynamic content ───────────────────────────────────
+            safeInit(() => UISystem.setupNavigation(), 'setupNavigation');
+            safeInit(() => this.renderContent(),       'renderContent');
+
+            // ── Modules that depend on rendered DOM ──────────────────────
+            safeInit(() => kineticText.init(),      'kineticText');
+            safeInit(() => animatedCounters.init(), 'animatedCounters');
+            // init() before setSkills() so the canvas is ready to receive skill nodes
+            safeInit(() => skillConstellation.init(),                    'skillConstellation.init');
+            safeInit(() => skillConstellation.setSkills(this.data.skills), 'skillConstellation.setSkills');
+            safeInit(() => gitHubActivity.init(),   'gitHubActivity');
+            if (typeof skillsRadar !== 'undefined') {
+                safeInit(() => skillsRadar.init(), 'skillsRadar');
+            }
+
+            // ── Scroll-driven stories (needs DOM + GSAP) ─────────────────
+            if (typeof gsap !== 'undefined') {
+                safeInit(() => scrollStories.init(), 'scrollStories');
+            }
+        } catch (e) {
+            console.error('[SYSTEM] Fatal init error:', e);
         }
 
-        // ── GSAP-based animation engine ──────────────────────────────
-        if (typeof gsap !== 'undefined') {
-            animationEngine.init();
-        }
-
-        // ── Render dynamic content ───────────────────────────────────
-        UISystem.setupNavigation();
-        this.renderContent();
-
-        // ── Modules that depend on rendered DOM ──────────────────────
-        kineticText.init();
-        animatedCounters.init();
-        skillConstellation.setSkills(this.data.skills);
-        skillConstellation.init();
-        gitHubActivity.init();
-        if (typeof skillsRadar !== 'undefined') skillsRadar.init();
-
-        // ── Scroll-driven stories (needs DOM + GSAP) ─────────────────
-        if (typeof gsap !== 'undefined') {
-            scrollStories.init();
-        }
-
-        // ── Boot animation ───────────────────────────────────────────
+        // ── Boot animation — always runs regardless of init errors ───
         this.runBootSequence();
     }
 

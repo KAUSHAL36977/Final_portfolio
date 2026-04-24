@@ -118,7 +118,7 @@ class ThreeWorld {
         this.lights    = [];
         this.coreUniforms = null;
         this.particleUniforms = null;
-        this.clock    = new THREE.Clock();
+        this.clock    = typeof THREE !== 'undefined' ? new THREE.Clock() : null;
 
         this.mouse          = { x: 0, y: 0 };
         this.targetRotation = { x: 0, y: 0 };
@@ -301,12 +301,14 @@ class ThreeWorld {
         this.particles = new THREE.Points(geo, mat);
         this.scene.add(this.particles);
 
-        gsap.to(this.particles.rotation, {
-            y: Math.PI * 2,
-            duration: 60,
-            repeat: -1,
-            ease: 'none',
-        });
+        if (typeof gsap !== 'undefined') {
+            gsap.to(this.particles.rotation, {
+                y: Math.PI * 2,
+                duration: 60,
+                repeat: -1,
+                ease: 'none',
+            });
+        }
     }
 
     _setupPostProcessing() {
@@ -367,7 +369,7 @@ class ThreeWorld {
 
     _animate = () => {
         requestAnimationFrame(this._animate);
-        const t = this.clock.getElapsedTime();
+        const t = this.clock ? this.clock.getElapsedTime() : 0;
 
         // Update shader uniforms
         if (this.coreUniforms)     this.coreUniforms.uTime.value     = t;
