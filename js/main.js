@@ -12,57 +12,60 @@ class KaushalPortfolio {
 
         await this.loadData();
 
+        // Helper: run a module init and warn on failure without aborting boot
+        const safeInit = (fn, name) => {
+            try { fn(); } catch (e) { console.warn(`[SYSTEM] ${name}:`, e.message); }
+        };
+
         try {
             // ── Core subsystems ─────────────────────────────────────────
-            try { inputTracker.init(); } catch (e) { console.warn('[SYSTEM] inputTracker:', e.message); }
-            try { scrollDepth.init(); } catch (e) { console.warn('[SYSTEM] scrollDepth:', e.message); }
-            try { appCore.init(); }      catch (e) { console.warn('[SYSTEM] appCore:', e.message); }
+            safeInit(() => inputTracker.init(), 'inputTracker');
+            safeInit(() => scrollDepth.init(),  'scrollDepth');
+            safeInit(() => appCore.init(),       'appCore');
 
             // ── UI modules (don't depend on data) ───────────────────────
-            try { advancedNav.init(); }      catch (e) { console.warn('[SYSTEM] advancedNav:', e.message); }
-            try { magneticCursor.init(); }   catch (e) { console.warn('[SYSTEM] magneticCursor:', e.message); }
-            try { grainOverlay.init(); }     catch (e) { console.warn('[SYSTEM] grainOverlay:', e.message); }
-            try { cursorSpotlight.init(); }  catch (e) { console.warn('[SYSTEM] cursorSpotlight:', e.message); }
-            try { cardTilt.init(); }         catch (e) { console.warn('[SYSTEM] cardTilt:', e.message); }
-            try { themeSystem.init(); }      catch (e) { console.warn('[SYSTEM] themeSystem:', e.message); }
-            try { konamiEgg.init(); }        catch (e) { console.warn('[SYSTEM] konamiEgg:', e.message); }
+            safeInit(() => advancedNav.init(),     'advancedNav');
+            safeInit(() => magneticCursor.init(),  'magneticCursor');
+            safeInit(() => grainOverlay.init(),    'grainOverlay');
+            safeInit(() => cursorSpotlight.init(), 'cursorSpotlight');
+            safeInit(() => cardTilt.init(),        'cardTilt');
+            safeInit(() => themeSystem.init(),     'themeSystem');
+            safeInit(() => konamiEgg.init(),       'konamiEgg');
 
             // ── 3D world ─────────────────────────────────────────────────
             if (typeof THREE !== 'undefined') {
-                try {
+                safeInit(() => {
                     threeWorld.init();
                     threeInteractions = new ThreeInteractions(threeWorld);
                     threeInteractions.init();
-                } catch (e) { console.warn('[SYSTEM] Three.js init:', e.message); }
+                }, 'Three.js');
             } else {
                 console.warn('[SYSTEM] Three.js not loaded.');
             }
 
             // ── GSAP-based animation engine ──────────────────────────────
             if (typeof gsap !== 'undefined') {
-                try { animationEngine.init(); } catch (e) { console.warn('[SYSTEM] animationEngine:', e.message); }
+                safeInit(() => animationEngine.init(), 'animationEngine');
             }
 
             // ── Render dynamic content ───────────────────────────────────
-            try { UISystem.setupNavigation(); } catch (e) { console.warn('[SYSTEM] setupNavigation:', e.message); }
-            try { this.renderContent(); }       catch (e) { console.warn('[SYSTEM] renderContent:', e.message); }
+            safeInit(() => UISystem.setupNavigation(), 'setupNavigation');
+            safeInit(() => this.renderContent(),       'renderContent');
 
             // ── Modules that depend on rendered DOM ──────────────────────
-            try { kineticText.init(); }      catch (e) { console.warn('[SYSTEM] kineticText:', e.message); }
-            try { animatedCounters.init(); } catch (e) { console.warn('[SYSTEM] animatedCounters:', e.message); }
+            safeInit(() => kineticText.init(),      'kineticText');
+            safeInit(() => animatedCounters.init(), 'animatedCounters');
             // init() before setSkills() so the canvas is ready to receive skill nodes
-            try {
-                skillConstellation.init();
-                skillConstellation.setSkills(this.data.skills);
-            } catch (e) { console.warn('[SYSTEM] skillConstellation:', e.message); }
-            try { gitHubActivity.init(); }   catch (e) { console.warn('[SYSTEM] gitHubActivity:', e.message); }
+            safeInit(() => skillConstellation.init(),                    'skillConstellation.init');
+            safeInit(() => skillConstellation.setSkills(this.data.skills), 'skillConstellation.setSkills');
+            safeInit(() => gitHubActivity.init(),   'gitHubActivity');
             if (typeof skillsRadar !== 'undefined') {
-                try { skillsRadar.init(); } catch (e) { console.warn('[SYSTEM] skillsRadar:', e.message); }
+                safeInit(() => skillsRadar.init(), 'skillsRadar');
             }
 
             // ── Scroll-driven stories (needs DOM + GSAP) ─────────────────
             if (typeof gsap !== 'undefined') {
-                try { scrollStories.init(); } catch (e) { console.warn('[SYSTEM] scrollStories:', e.message); }
+                safeInit(() => scrollStories.init(), 'scrollStories');
             }
         } catch (e) {
             console.error('[SYSTEM] Fatal init error:', e);

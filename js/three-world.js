@@ -369,7 +369,7 @@ class ThreeWorld {
 
     _animate = () => {
         requestAnimationFrame(this._animate);
-        const t = this.clock.getElapsedTime();
+        const t = this.clock ? this.clock.getElapsedTime() : 0;
 
         // Update shader uniforms
         if (this.coreUniforms)     this.coreUniforms.uTime.value     = t;
