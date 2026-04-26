@@ -84,9 +84,8 @@ class SkillConstellation {
         window.addEventListener('resize', () => this._resize(), { passive: true });
 
         this.canvas.addEventListener('mousemove', (e) => {
-            const rect   = this.canvas.getBoundingClientRect();
-            this.mouse.x = e.clientX - rect.left;
-            this.mouse.y = e.clientY - rect.top;
+            this.mouse.x = e.offsetX;
+            this.mouse.y = e.offsetY;
             this._findHovered();
         });
 
