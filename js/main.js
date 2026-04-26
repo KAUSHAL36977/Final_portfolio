@@ -12,29 +12,24 @@ class KaushalPortfolio {
 
         await this.loadData();
 
-        // Helper: run a module init and warn on failure without aborting boot
-        const safeInit = (fn, name) => {
-            try { fn(); } catch (e) { console.warn(`[SYSTEM] ${name}:`, e.message); }
-        };
-
         try {
             // ── Core subsystems ─────────────────────────────────────────
-            safeInit(() => inputTracker.init(), 'inputTracker');
-            safeInit(() => scrollDepth.init(),  'scrollDepth');
-            safeInit(() => appCore.init(),       'appCore');
+            UISystem.safeInit(() => inputTracker.init(), 'inputTracker');
+            UISystem.safeInit(() => scrollDepth.init(),  'scrollDepth');
+            UISystem.safeInit(() => appCore.init(),       'appCore');
 
             // ── UI modules (don't depend on data) ───────────────────────
-            safeInit(() => advancedNav.init(),     'advancedNav');
-            safeInit(() => magneticCursor.init(),  'magneticCursor');
-            safeInit(() => grainOverlay.init(),    'grainOverlay');
-            safeInit(() => cursorSpotlight.init(), 'cursorSpotlight');
-            safeInit(() => cardTilt.init(),        'cardTilt');
-            safeInit(() => themeSystem.init(),     'themeSystem');
-            safeInit(() => konamiEgg.init(),       'konamiEgg');
+            UISystem.safeInit(() => advancedNav.init(),     'advancedNav');
+            UISystem.safeInit(() => magneticCursor.init(),  'magneticCursor');
+            UISystem.safeInit(() => grainOverlay.init(),    'grainOverlay');
+            UISystem.safeInit(() => cursorSpotlight.init(), 'cursorSpotlight');
+            UISystem.safeInit(() => cardTilt.init(),        'cardTilt');
+            UISystem.safeInit(() => themeSystem.init(),     'themeSystem');
+            UISystem.safeInit(() => konamiEgg.init(),       'konamiEgg');
 
             // ── 3D world ─────────────────────────────────────────────────
             if (typeof THREE !== 'undefined') {
-                safeInit(() => {
+                UISystem.safeInit(() => {
                     threeWorld.init();
                     threeInteractions = new ThreeInteractions(threeWorld);
                     threeInteractions.init();
@@ -45,27 +40,27 @@ class KaushalPortfolio {
 
             // ── GSAP-based animation engine ──────────────────────────────
             if (typeof gsap !== 'undefined') {
-                safeInit(() => animationEngine.init(), 'animationEngine');
+                UISystem.safeInit(() => animationEngine.init(), 'animationEngine');
             }
 
             // ── Render dynamic content ───────────────────────────────────
-            safeInit(() => UISystem.setupNavigation(), 'setupNavigation');
-            safeInit(() => this.renderContent(),       'renderContent');
+            UISystem.safeInit(() => UISystem.setupNavigation(), 'setupNavigation');
+            UISystem.safeInit(() => this.renderContent(),       'renderContent');
 
             // ── Modules that depend on rendered DOM ──────────────────────
-            safeInit(() => kineticText.init(),      'kineticText');
-            safeInit(() => animatedCounters.init(), 'animatedCounters');
+            UISystem.safeInit(() => kineticText.init(),      'kineticText');
+            UISystem.safeInit(() => animatedCounters.init(), 'animatedCounters');
             // init() before setSkills() so the canvas is ready to receive skill nodes
-            safeInit(() => skillConstellation.init(),                    'skillConstellation.init');
-            safeInit(() => skillConstellation.setSkills(this.data.skills), 'skillConstellation.setSkills');
-            safeInit(() => gitHubActivity.init(),   'gitHubActivity');
+            UISystem.safeInit(() => skillConstellation.init(),                    'skillConstellation.init');
+            UISystem.safeInit(() => skillConstellation.setSkills(this.data.skills), 'skillConstellation.setSkills');
+            UISystem.safeInit(() => gitHubActivity.init(),   'gitHubActivity');
             if (typeof skillsRadar !== 'undefined') {
-                safeInit(() => skillsRadar.init(), 'skillsRadar');
+                UISystem.safeInit(() => skillsRadar.init(), 'skillsRadar');
             }
 
             // ── Scroll-driven stories (needs DOM + GSAP) ─────────────────
             if (typeof gsap !== 'undefined') {
-                safeInit(() => scrollStories.init(), 'scrollStories');
+                UISystem.safeInit(() => scrollStories.init(), 'scrollStories');
             }
         } catch (e) {
             console.error('[SYSTEM] Fatal init error:', e);

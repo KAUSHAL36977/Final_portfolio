@@ -57,5 +57,17 @@ class UISystem {
             });
         });
     }
+
+    // Helper: run a module init and warn on failure without aborting boot
+    static safeInit(fn, name) {
+        try {
+            fn();
+        } catch (e) {
+            console.warn(`[SYSTEM] ${name}:`, e.message);
+        }
+    }
 }
 
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = UISystem;
+}
