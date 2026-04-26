@@ -9,30 +9,8 @@ class UISystem {
         return el;
     }
     
-    static addClasses(el, classes) {
-        el.classList.add(...classes.split(' '));
-    }
-    
-    static removeClasses(el, classes) {
-        el.classList.remove(...classes.split(' '));
-    }
-    
-    static hasClass(el, className) {
-        return el.classList.contains(className);
-    }
-    
-    static setAttributes(el, attrs) {
-        Object.entries(attrs).forEach(([key, value]) => {
-            el.setAttribute(key, value);
-        });
-    }
-    
     static querySelector(selector) {
         return document.querySelector(selector);
-    }
-    
-    static querySelectorAll(selector) {
-        return document.querySelectorAll(selector);
     }
     
     static scrollToElement(selector, offset = 0) {
