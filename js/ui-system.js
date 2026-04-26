@@ -2,6 +2,16 @@
 // DOM utilities. Component logic. Clean helpers.
 
 class UISystem {
+    static escapeHTML(str) {
+        if (str === null || str === undefined) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
     static createElement(tag, classes = '', html = '') {
         const el = document.createElement(tag);
         if (classes) el.className = classes;

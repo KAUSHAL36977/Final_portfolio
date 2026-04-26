@@ -53,10 +53,10 @@ class GitHubActivity {
             <div class="github-commit" style="--delay:${i * 0.1}s">
                 <span class="commit-dot" aria-hidden="true">◆</span>
                 <div class="commit-info">
-                    <span class="commit-repo">${this._esc(c.repo)}</span>
-                    <span class="commit-msg">${this._esc(c.msg.slice(0, 60))}${c.msg.length > 60 ? '…' : ''}</span>
+                    <span class="commit-repo">${UISystem.escapeHTML(c.repo)}</span>
+                    <span class="commit-msg">${UISystem.escapeHTML(c.msg.slice(0, 60))}${c.msg.length > 60 ? '…' : ''}</span>
                 </div>
-                <span class="commit-time">${this._ago(c.time)}</span>
+                <span class="commit-time">${UISystem.escapeHTML(this._ago(c.time))}</span>
             </div>`).join('');
     }
 
@@ -81,9 +81,9 @@ class GitHubActivity {
 
         heatmap.innerHTML = cells.map((c, i) => `
             <div class="heatmap-cell level-${Math.min(c.count, 4)}"
-                 title="${this._esc(c.key)}: ${c.count} event${c.count !== 1 ? 's' : ''}"
+                 title="${UISystem.escapeHTML(c.key)}: ${UISystem.escapeHTML(c.count)} event${c.count !== 1 ? 's' : ''}"
                  role="img"
-                 aria-label="${this._esc(c.key)}: ${c.count} events"
+                 aria-label="${UISystem.escapeHTML(c.key)}: ${UISystem.escapeHTML(c.count)} events"
                  style="--i:${i}">
             </div>`).join('');
 
@@ -113,10 +113,6 @@ class GitHubActivity {
         if (s < 3600)  return `${Math.floor(s / 60)}m ago`;
         if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
         return `${Math.floor(s / 86400)}d ago`;
-    }
-
-    _esc(str) {
-        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 }
 

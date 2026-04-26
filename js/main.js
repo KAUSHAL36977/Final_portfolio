@@ -207,11 +207,11 @@ class KaushalPortfolio {
             this.data.skills.forEach(skill => {
                 const card = UISystem.createElement('div', 'skill-vault metal-panel');
                 card.innerHTML = `
-                    <div class="skill-icon">${skill.icon}</div>
-                    <h3>${skill.title}</h3>
-                    <p class="text-muted">${skill.description}</p>
+                    <div class="skill-icon">${UISystem.escapeHTML(skill.icon)}</div>
+                    <h3>${UISystem.escapeHTML(skill.title)}</h3>
+                    <p class="text-muted">${UISystem.escapeHTML(skill.description)}</p>
                     <div class="skill-tags">
-                        ${skill.tags.map(t => `<span class="skill-tag">${t}</span>`).join('')}
+                        ${skill.tags.map(t => `<span class="skill-tag">${UISystem.escapeHTML(t)}</span>`).join('')}
                     </div>`;
                 proofGrid.appendChild(card);
             });
@@ -223,21 +223,21 @@ class KaushalPortfolio {
             this.data.projects.forEach(project => {
                 const card = UISystem.createElement('div', 'operation-card metal-panel');
                 card.innerHTML = `
-                    <div class="operation-icon">${project.icon}</div>
+                    <div class="operation-icon">${UISystem.escapeHTML(project.icon)}</div>
                     <div class="operation-content">
-                        <h3>${project.title}</h3>
+                        <h3>${UISystem.escapeHTML(project.title)}</h3>
                         <div class="operation-problem">
-                            <strong>Problem:</strong> ${project.problem}
+                            <strong>Problem:</strong> ${UISystem.escapeHTML(project.problem)}
                         </div>
                         <div class="operation-impact">
                             ${project.impact.map(m => `
                                 <div class="impact-item">
-                                    <div class="impact-value">${m.value}</div>
-                                    <div class="impact-label">${m.label}</div>
+                                    <div class="impact-value">${UISystem.escapeHTML(m.value)}</div>
+                                    <div class="impact-label">${UISystem.escapeHTML(m.label)}</div>
                                 </div>`).join('')}
                         </div>
                         <div class="operation-stack">
-                            ${project.stack.map(t => `<span class="stack-badge">${t}</span>`).join('')}
+                            ${project.stack.map(t => `<span class="stack-badge">${UISystem.escapeHTML(t)}</span>`).join('')}
                         </div>
                     </div>`;
                 opsContainer.appendChild(card);
@@ -261,8 +261,8 @@ class KaushalPortfolio {
             this.data.content.doctrines.forEach(d => {
                 const card = UISystem.createElement('div', 'doctrine-card metal-panel');
                 card.innerHTML = `
-                    <div class="doctrine-number">${d.number}</div>
-                    <p class="doctrine-text">${d.text}</p>`;
+                    <div class="doctrine-number">${UISystem.escapeHTML(d.number)}</div>
+                    <p class="doctrine-text">${UISystem.escapeHTML(d.text)}</p>`;
                 doctrineGrid.appendChild(card);
             });
         }
@@ -275,9 +275,9 @@ class KaushalPortfolio {
                 el.innerHTML = `
                     <div class="timeline-dot" aria-hidden="true"></div>
                     <div class="timeline-body metal-panel">
-                        <div class="timeline-year">${item.year}</div>
-                        <div class="timeline-title">${item.title}</div>
-                        <div class="timeline-detail text-muted">${item.detail}</div>
+                        <div class="timeline-year">${UISystem.escapeHTML(item.year)}</div>
+                        <div class="timeline-title">${UISystem.escapeHTML(item.title)}</div>
+                        <div class="timeline-detail text-muted">${UISystem.escapeHTML(item.detail)}</div>
                     </div>`;
                 tlContainer.appendChild(el);
             });
