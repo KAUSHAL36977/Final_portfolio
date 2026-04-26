@@ -4,6 +4,7 @@ import { useState } from 'react';
 import BootSequence from '@/components/hud/BootSequence';
 import MainExperience from '@/components/three/MainExperience';
 import HUDOverlay from '@/components/hud/HUDOverlay';
+import AudioController from '@/components/audio/AudioController';
 
 export default function Home() {
   const [booted, setBooted] = useState(false);
@@ -14,6 +15,7 @@ export default function Home() {
 
       {booted && (
         <>
+          <AudioController />
           <HUDOverlay />
           <div className="absolute inset-0 z-0">
              <MainExperience />
